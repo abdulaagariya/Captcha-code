@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CAPTCHA CODE</title>
+  <script>
+    // Generate a random CAPTCHA string
+    function generateCaptcha() {
+      var captcha = '';
+      var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      for (var i = 0; i < 6; i++) {
+        captcha += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      document.getElementById('captcha').innerHTML = captcha;
+    }
+
+    // Validate the user-entered CAPTCHA
+    function validateCaptcha() {
+      var enteredCaptcha = document.getElementById('userCaptcha').value;
+      var generatedCaptcha = document.getElementById('captcha').innerHTML;
+
+      if (enteredCaptcha === generatedCaptcha) {
+        alert('CAPTCHA validation successful!');
+      } else {
+        alert('CAPTCHA validation failed. Please try again.');
+      }
+    }
+  </script>
+</head>
+<body>
+ <h1 style="background-color:rgb(30, 255, 120);">CAPTCHA Example</h1>
+  <p>Enter the CAPTCHA shown below:</p>
+  <p id="captcha"></p>
+  <input type="text" id="userCaptcha">
+  <button onclick="validateCaptcha()">Submit</button>
+  <button onclick="generateCaptcha()">Generate New CAPTCHA</button>
+
+  <script>
+    // Generate initial CAPTCHA on page load
+    generateCaptcha();
+  </script>
+</body>
+</html>
+
+
+  
